@@ -1,0 +1,8 @@
+{
+  "kind": "spot_reference",
+  "id": "spot_reference-B",
+  "revision": "v1",
+  "period": "2026-11-13",
+  "subject": "sample-A",
+  "state": "pending"
+}

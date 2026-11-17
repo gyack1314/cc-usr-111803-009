@@ -1,0 +1,33 @@
+{
+  "allowed_origins": [
+    "https://local-source-009.example.test"
+  ],
+  "steps": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://local-source-009.example.test/records/market_report-A",
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "response": {
+        "file": "source-1.bin",
+        "status": 200,
+        "bytes": 151,
+        "sha256": "fb0cb9502cfb925ff3592eefae947d4c865c47314e5f7827bdd7e438c22353ea"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://local-source-009.example.test/records/market_report-A",
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "response": {
+        "file": "source-conflict.bin",
+        "status": 200,
+        "bytes": 156,
+        "sha256": "3e48f115c21fc8cddd7809425229c5560d3ce35f94e49b7cee31afa5bc0de738"
+      }
+    }
+  ]
+}
