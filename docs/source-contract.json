@@ -1,0 +1,24 @@
+{
+  "roles": [
+    "market_report",
+    "spot_reference"
+  ],
+  "relation_field": "report_id",
+  "required_fields": {
+    "market_report": [
+      "report_id",
+      "prediction_week",
+      "issued_on"
+    ],
+    "spot_reference": [
+      "report_id",
+      "observed_week",
+      "price_cny_kg"
+    ]
+  },
+  "source_identity": [
+    "kind",
+    "id",
+    "revision"
+  ]
+}

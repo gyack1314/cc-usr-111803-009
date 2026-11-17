@@ -1,8 +1,8 @@
 {
   "kind": "spot_reference",
-  "id": "spot_reference-B",
+  "id": "spot_reference-A",
   "revision": "v1",
-  "period": "2026-11-13",
-  "subject": "sample-A",
-  "state": "pending"
+  "report_id": "study-1",
+  "observed_week": "2026-W46",
+  "price_cny_kg": 8.66
 }

@@ -2,7 +2,7 @@
   "kind": "market_report",
   "id": "market_report-A",
   "revision": "v1",
-  "period": "2026-11-13",
-  "subject": "sample-A",
-  "state": "published"
+  "report_id": "study-1",
+  "prediction_week": "2026-W47",
+  "issued_on": "2026-11-14"
 }
