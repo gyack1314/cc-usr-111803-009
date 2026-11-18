@@ -1,0 +1,37 @@
+{
+  "allowed_origins": [
+    "https://local-source-009.example.test"
+  ],
+  "sources": [
+    {
+      "url": "https://local-source-009.example.test/records/market_report-A",
+      "kind": "market_report",
+      "required": true
+    },
+    {
+      "url": "https://local-source-009.example.test/records/spot_reference-B",
+      "kind": "spot_reference",
+      "required": true
+    },
+    {
+      "url": "https://local-source-009.example.test/records/report_amendment-A",
+      "kind": "report_amendment",
+      "required": true
+    }
+  ],
+  "steps": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://local-source-009.example.test/records/report_amendment-A",
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "response": {
+        "file": "source-event.bin",
+        "status": 200,
+        "bytes": 199,
+        "sha256": "d94fda89ce144db1e53deb9bb8f53ce950a7e16edc6f4e1ec541465c657a47d5"
+      }
+    }
+  ]
+}

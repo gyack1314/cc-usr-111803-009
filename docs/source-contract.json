@@ -1,7 +1,8 @@
 {
   "roles": [
     "market_report",
-    "spot_reference"
+    "spot_reference",
+    "report_amendment"
   ],
   "relation_field": "report_id",
   "required_fields": {
@@ -14,6 +15,12 @@
       "report_id",
       "observed_week",
       "price_cny_kg"
+    ],
+    "report_amendment": [
+      "report_id",
+      "issued_on",
+      "prediction_week",
+      "replaces_revision"
     ]
   },
   "source_identity": [

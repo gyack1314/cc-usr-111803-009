@@ -1,0 +1,9 @@
+{
+  "kind": "report_amendment",
+  "id": "report_amendment-A",
+  "revision": "v1",
+  "report_id": "study-1",
+  "issued_on": "2026-11-16",
+  "prediction_week": "2026-W48",
+  "replaces_revision": "v1"
+}
