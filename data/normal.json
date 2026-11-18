@@ -29,5 +29,17 @@
         "sha256": "a8c0943ba8368342161706194cd0d94ff48d1e430c74617a4369d2824256ecf3"
       }
     }
+  ],
+  "sources": [
+    {
+      "url": "https://local-source-009.example.test/records/market_report-A",
+      "kind": "market_report",
+      "required": true
+    },
+    {
+      "url": "https://local-source-009.example.test/records/spot_reference-B",
+      "kind": "spot_reference",
+      "required": true
+    }
   ]
 }

@@ -1,0 +1,32 @@
+{
+  "allowed_origins": [
+    "https://local-source-009.example.test"
+  ],
+  "sources": [
+    {
+      "url": "https://local-source-009.example.test/records/market_report-A",
+      "kind": "market_report",
+      "required": true
+    },
+    {
+      "url": "https://local-source-009.example.test/records/spot_reference-B",
+      "kind": "spot_reference",
+      "required": true
+    }
+  ],
+  "steps": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://local-source-009.example.test/records/market_report-A",
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "response": {
+        "file": "source-1.bin",
+        "status": 200,
+        "bytes": 164,
+        "sha256": "8a238542b7d3b2674c9602ac3278f3c0d6886678d3d6024d5ed3bf43e38ce036"
+      }
+    }
+  ]
+}
