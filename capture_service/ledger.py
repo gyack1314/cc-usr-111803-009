@@ -41,3 +41,10 @@ def receive(c, collection, raw, receipt):
 def entities(c,collection):
     return [dict(type=row[0],id=row[1],version=row[2],source=row[3],payload=json.loads(row[4]))
             for row in c.execute('SELECT entity_type,entity_id,version,receipt_sha256,payload_json FROM entities WHERE collection=? ORDER BY entity_type,entity_id,version',(collection,))]
+
+def raw_receipt(c, collection, body_sha256):
+    """按收据指纹取回冻结的来源原文字节与来源地址，供读者核对机构原话。"""
+    row=c.execute('SELECT source_url,status,raw FROM receipts WHERE collection=? AND body_sha256=?',
+                  (collection,body_sha256)).fetchone()
+    if row is None:raise KeyError((collection,body_sha256))
+    return {'source_url':row[0],'status':row[1],'body_sha256':body_sha256,'raw':row[2]}

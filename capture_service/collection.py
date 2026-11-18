@@ -56,7 +56,7 @@ def progress(connection, collection):
                 (collection,))]
 
 def coverage(connection, collection):
-    """区分来源接收进度与已核实的业务资料范围。"""
+    """区分来源接收进度与业务核实范围：修订悬置或引用缺失的必需来源不算已核实。"""
     initialize(connection)
     rows = connection.execute(
         'SELECT s.source_url,s.source_kind,s.required,COUNT(p.body_sha256) '
@@ -65,17 +65,19 @@ def coverage(connection, collection):
         'WHERE s.collection=? GROUP BY s.source_url,s.source_kind,s.required ORDER BY s.source_url',
         (collection,)).fetchall()
     view = assess(entities(connection, collection))
-    verified = {source for pair in view['matched_pairs']
-                for source in (pair['left_source'], pair['right_source'])}
+    verified = set(view['verified_digests'])
+    progress_rows = connection.execute(
+        'SELECT source_url,body_sha256 FROM collection_progress WHERE collection=?',
+        (collection,)).fetchall()
+    received = {}
+    for url, digest in progress_rows:
+        received.setdefault(url, set()).add(digest)
     sources = []
-    for url, kind, required, received in rows:
+    for url, kind, required, count in rows:
+        digests = received.get(url, set())
         sources.append(dict(url=url, kind=kind, required=bool(required),
-                            received_versions=received,
-                            verified=any(digest in verified for digest, in connection.execute(
-                                'SELECT p.body_sha256 FROM collection_progress p JOIN receipts r '
-                                'ON r.collection=p.collection AND r.body_sha256=p.body_sha256 '
-                                'WHERE p.collection=? AND p.source_url=? AND r.source_url=p.source_url',
-                                (collection, url)))))
+                            received_versions=count,
+                            verified=bool(digests & verified)))
     return {'expected': len(rows), 'received': sum(bool(row[3]) for row in rows),
             'missing_required': [row[0] for row in rows if row[2] and not row[3]],
             'unverified_required': [item['url'] for item in sources
