@@ -34,12 +34,14 @@
     {
       "url": "https://local-source-009.example.test/records/market_report-A",
       "kind": "market_report",
-      "required": true
+      "required": true,
+      "expected_revision": "v1"
     },
     {
       "url": "https://local-source-009.example.test/records/spot_reference-B",
       "kind": "spot_reference",
-      "required": true
+      "required": true,
+      "expected_revision": "v1"
     }
   ]
 }
